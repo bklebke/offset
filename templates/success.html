@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h2>Successful Linkage</h2>
+<p>Congratulations, the account successfully linked.
+	<br>
+	<a class="btn btn-primary btn-lg" href="{% url 'profile' %}" role="button">Return to Profile Page</a>
+</p>
+
+{% endblock %}

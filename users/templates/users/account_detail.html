@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+{% load mathfilters %}
+<h1>Account Overview</h1>
+<p>This page presents information on your gasoline purchases in the last month.<br>
+Due to data availability issues, we have opted to assume a gasoline price of $4 for now.<br>
+Offset costs are based on $0.0075 per pound of CO2, or $15.00 per ton.<br><br></p>
+{% for e in subaccount %}
+
+	<h5>{{e.subaccount_name}} Transactions - <i>({{e.subaccount_type}})</i></h5>
+		<table style="width:90%">
+			<tr>
+				<th>Description</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th>City</th>
+				<th>Zip</th>
+				<th>Gallons</th>
+				<th>Lbs CO2</th>
+				<th>Price</th>
+			</tr>
+		{% for x in e.transaction_set.all %}
+
+			{% if x.plaid_acct_id == e.plaid_acct_id and x.category_id == '22009000' %}
+				<tr>
+					<td>{{x.transaction_detail}}</td>
+					<td>${{x.transaction_amt}}</td>
+					<td>{{x.transaction_date}}</td>
+					<td>{{x.loc_city}}</td>
+					<td>{{x.loc_zip}}</td>
+					<td>{{x.transaction_amt|div:4.00}}</td>
+					<td>{{x.transaction_amt|div:4.00|mul:20}}</td>
+					<td>${{x.transaction_amt|div:4.00|mul:0.15}}
+				</tr>
+			{% endif %}
+
+
+		{% endfor %}
+		</table>
+<br><br>
+{% endfor %}
+
+{% endblock %}

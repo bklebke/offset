@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h2>Successful Linkage</h2>
+first name: {{user.first_name}}
+last name: {{user.last_name}}
+accounts: {{user.account}}
+
+By the way, this is test content.
+
+{% endblock %}

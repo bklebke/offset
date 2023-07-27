@@ -1,0 +1,12 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="jumbotron">
+<h1 class="display-4">Offset.Me Carbon Management - Prototype</h1>
+<p class="lead">A Carbon-Emissions Management App built with Django, Javascript, and Plaid.</p> <p class="lead">
+<a class="btn btn-primary btn-lg" href="{% url 'profile' %}" role="button">View Profile Page</a>
+<a class="btn btn-secondary btn-lg" href="{% url 'signup' %}" role="button">Sign Up</a>
+</p> </div>
+{% endblock %}
